@@ -2,23 +2,24 @@
 #'
 #' Create a test context, set and query the default context.
 #'
-#' @param drv \code{[DBIDriver]}\cr An expression that constructs a DBI driver,
+#' @param drv `[DBIDriver]`\cr An expression that constructs a DBI driver,
 #'   like `SQLite()`.
-#' @param connect_args \code{[named list]}\cr Connection arguments (names and
-#'   values).
-#' @param set_as_default \code{[logical(1)]}\cr Should the created context be
+#' @param connect_args `[named list]`\cr Connection arguments (names and values).
+#' @param set_as_default `[logical(1)]`\cr Should the created context be
 #'   set as default context?
-#' @param tweaks \code{[DBItest_tweaks]}\cr Tweaks as constructed by the
-#'   \code{\link{tweaks}} function.
-#' @param ctx \code{[DBItest_context]}\cr A test context.
-#' @return \code{[DBItest_context]}\cr A test context, for
-#'   \code{set_default_context} the previous default context (invisibly) or
-#'   \code{NULL}.
+#' @param tweaks `[DBItest_tweaks]`\cr Tweaks as constructed by the
+#'   [tweaks()] function.
+#' @param ctx `[DBItest_context]`\cr A test context.
+#' @param name `[character]`\cr An optional name of the context which will
+#'   be used in test messages.
+#' @return `[DBItest_context]`\cr A test context, for
+#'   `set_default_context` the previous default context (invisibly) or
+#'   `NULL`.
 #'
 #' @rdname context
 #' @export
 make_context <- function(drv, connect_args, set_as_default = TRUE,
-                         tweaks = NULL) {
+                         tweaks = NULL, name = NULL) {
   drv_call <- substitute(drv)
 
   if (is.null(drv)) {
@@ -34,7 +35,8 @@ make_context <- function(drv, connect_args, set_as_default = TRUE,
       drv = drv,
       drv_call = drv_call,
       connect_args = connect_args,
-      tweaks = tweaks
+      tweaks = tweaks,
+      name = name
     ),
     class = "DBItest_context"
   )

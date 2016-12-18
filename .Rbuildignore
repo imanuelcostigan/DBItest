@@ -4,3 +4,6 @@
 ^\.lintr$
 ^cran-comments\.md$
 ^revdep-dev$
+^appveyor\.yml$
+^man-roxygen$
+^revdep$

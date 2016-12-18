@@ -1,18 +1,16 @@
 ## Test environments
-* ubuntu 14.04, R 3.2.2
-* ubuntu 12.04 (on travis-ci), R 3.2.3
+* local ubuntu 16.10, R 3.3.2
+* ubuntu 12.04 (on travis-ci), R release, devel, and oldrel
 * win-builder (devel and release)
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
 
-There was 1 NOTE:
+Changes to the package's description as requested by Uwe Ligges. I hope a same-version update is okay here.
 
-* checking dependencies in R code ... NOTE
-  Missing or unexported object: 'DBI::dbBind'
+## Reverse dependencies
 
-  This virtual method is available only in the development release of the DBI
-  package, which hasn't been published to CRAN yet..
+* I checked the two reverse dependencies `bigrquery` and `RSQLite`.
+  There were no ERRORs, WARNINGs or NOTEs.
 
-## Downstream dependencies
-Initial submission.
+* RSQLite 1.1 on OS X seems to depend on this release, could you please trigger
+  a rebuild of RSQLite 1.1 once DBItest 1.4 has been built for OS X?
